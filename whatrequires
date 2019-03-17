@@ -1,5 +1,2 @@
 # This file contains recursive sources that require this package
-R-bipartite
-R-compositions
 R-rgl
-R-sna

@@ -4,36 +4,32 @@
 #
 Name     : R-manipulateWidget
 Version  : 0.10.0
-Release  : 15
+Release  : 16
 URL      : https://cran.r-project.org/src/contrib/manipulateWidget_0.10.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/manipulateWidget_0.10.0.tar.gz
 Summary  : Add Even More Interactivity to Interactive Charts
 Group    : Development/Tools
-License  : GPL-2.0+
+License  : GPL-2.0+ MIT
 Requires: R-base64enc
 Requires: R-dygraphs
+Requires: R-htmltools
 Requires: R-htmlwidgets
 Requires: R-leaflet
-Requires: R-mime
 Requires: R-miniUI
 Requires: R-shiny
-Requires: R-stringi
 Requires: R-webshot
 BuildRequires : R-base64enc
 BuildRequires : R-dygraphs
+BuildRequires : R-htmltools
 BuildRequires : R-htmlwidgets
 BuildRequires : R-leaflet
-BuildRequires : R-mime
 BuildRequires : R-miniUI
 BuildRequires : R-shiny
-BuildRequires : R-stringi
 BuildRequires : R-webshot
-BuildRequires : clr-R-helpers
+BuildRequires : buildreq-R
 
 %description
-helps to easily add controls like sliders, pickers, checkboxes, etc. that 
-    can be used to modify the input data or the parameters of an interactive 
-    chart created with package 'htmlwidgets'.
+No detailed description available
 
 %prep
 %setup -q -c -n manipulateWidget
@@ -43,11 +39,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1528817046
+export SOURCE_DATE_EPOCH=1552861192
 
 %install
+export SOURCE_DATE_EPOCH=1552861192
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1528817046
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -65,9 +61,9 @@ echo "FFLAGS = $FFLAGS -march=haswell -ftree-vectorize " >> ~/.R/Makevars
 echo "CXXFLAGS = $CXXFLAGS -march=haswell -ftree-vectorize " >> ~/.R/Makevars
 R CMD INSTALL --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} --build  -l %{buildroot}/usr/lib64/R/library manipulateWidget
 for i in `find %{buildroot}/usr/lib64/R/ -name "*.so"`; do mv $i $i.avx2 ; mv $i.avx2 ~/.stash/; done
-echo "CFLAGS = $CFLAGS -march=skylake-avx512 -ftree-vectorize -mprefer-vector-width=512 " > ~/.R/Makevars
-echo "FFLAGS = $FFLAGS -march=skylake-avx512 -ftree-vectorize -mprefer-vector-width=512 " >> ~/.R/Makevars
-echo "CXXFLAGS = $CXXFLAGS -march=skylake-avx512 -ftree-vectorize -mprefer-vector-width=512  " >> ~/.R/Makevars
+echo "CFLAGS = $CFLAGS -march=skylake-avx512 -ftree-vectorize " > ~/.R/Makevars
+echo "FFLAGS = $FFLAGS -march=skylake-avx512 -ftree-vectorize " >> ~/.R/Makevars
+echo "CXXFLAGS = $CXXFLAGS -march=skylake-avx512 -ftree-vectorize " >> ~/.R/Makevars
 R CMD INSTALL --preclean --install-tests --no-test-load --built-timestamp=${SOURCE_DATE_EPOCH} --build  -l %{buildroot}/usr/lib64/R/library manipulateWidget
 for i in `find %{buildroot}/usr/lib64/R/ -name "*.so"`; do mv $i $i.avx512 ; mv $i.avx512 ~/.stash/; done
 echo "CFLAGS = $CFLAGS -ftree-vectorize " > ~/.R/Makevars
@@ -82,8 +78,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library manipulateWidget|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  manipulateWidget || :
 
 
 %files
@@ -126,3 +121,16 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/manipulateWidget/lib/export/html2canvas/html2canvas.js
 /usr/lib64/R/library/manipulateWidget/manipulate_widget/manipulate_widget.css
 /usr/lib64/R/library/manipulateWidget/manipulate_widget/manipulate_widget.js
+/usr/lib64/R/library/manipulateWidget/tests/testthat.R
+/usr/lib64/R/library/manipulateWidget/tests/testthat/helper-input_class.R
+/usr/lib64/R/library/manipulateWidget/tests/testthat/test-controller.R
+/usr/lib64/R/library/manipulateWidget/tests/testthat/test-get_output_and_render_func.R
+/usr/lib64/R/library/manipulateWidget/tests/testthat/test-init_inputs.R
+/usr/lib64/R/library/manipulateWidget/tests/testthat/test-input_class.R
+/usr/lib64/R/library/manipulateWidget/tests/testthat/test-input_list_class.R
+/usr/lib64/R/library/manipulateWidget/tests/testthat/test-input_utils.R
+/usr/lib64/R/library/manipulateWidget/tests/testthat/test-inputs.R
+/usr/lib64/R/library/manipulateWidget/tests/testthat/test-manipulate_widget.R
+/usr/lib64/R/library/manipulateWidget/tests/testthat/test-mwModuleUI.R
+/usr/lib64/R/library/manipulateWidget/tests/testthat/test-on_done.R
+/usr/lib64/R/library/manipulateWidget/tests/testthat/test-staticPlot.R
