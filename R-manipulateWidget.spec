@@ -4,21 +4,16 @@
 #
 Name     : R-manipulateWidget
 Version  : 0.10.0
-Release  : 17
+Release  : 18
 URL      : https://cran.r-project.org/src/contrib/manipulateWidget_0.10.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/manipulateWidget_0.10.0.tar.gz
 Summary  : Add Even More Interactivity to Interactive Charts
 Group    : Development/Tools
 License  : GPL-2.0+ MIT
-Requires: R-base64enc
-Requires: R-dygraphs
-Requires: R-htmltools
-Requires: R-htmlwidgets
-Requires: R-leaflet
-Requires: R-miniUI
-Requires: R-shiny
-Requires: R-webshot
+Requires: R-cli
+Requires: R-withr
 BuildRequires : R-base64enc
+BuildRequires : R-cli
 BuildRequires : R-dygraphs
 BuildRequires : R-htmltools
 BuildRequires : R-htmlwidgets
@@ -26,6 +21,7 @@ BuildRequires : R-leaflet
 BuildRequires : R-miniUI
 BuildRequires : R-shiny
 BuildRequires : R-webshot
+BuildRequires : R-withr
 BuildRequires : buildreq-R
 
 %description
@@ -39,10 +35,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552861192
+export SOURCE_DATE_EPOCH=1552886541
 
 %install
-export SOURCE_DATE_EPOCH=1552861192
+export SOURCE_DATE_EPOCH=1552886541
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
