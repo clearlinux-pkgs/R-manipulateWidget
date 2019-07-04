@@ -4,28 +4,40 @@
 #
 Name     : R-manipulateWidget
 Version  : 0.10.0
-Release  : 20
+Release  : 21
 URL      : https://cran.r-project.org/src/contrib/manipulateWidget_0.10.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/manipulateWidget_0.10.0.tar.gz
 Summary  : Add Even More Interactivity to Interactive Charts
 Group    : Development/Tools
 License  : GPL-2.0+ MIT
-Requires: R-cli
-Requires: R-withr
+Requires: R-base64enc
+Requires: R-dygraphs
+Requires: R-htmltools
+Requires: R-htmlwidgets
+Requires: R-knitr
+Requires: R-leaflet
+Requires: R-miniUI
+Requires: R-shiny
+Requires: R-webshot
+Requires: R-xts
+Requires: R-zoo
 BuildRequires : R-base64enc
-BuildRequires : R-cli
 BuildRequires : R-dygraphs
 BuildRequires : R-htmltools
 BuildRequires : R-htmlwidgets
+BuildRequires : R-knitr
 BuildRequires : R-leaflet
 BuildRequires : R-miniUI
 BuildRequires : R-shiny
 BuildRequires : R-webshot
-BuildRequires : R-withr
+BuildRequires : R-xts
+BuildRequires : R-zoo
 BuildRequires : buildreq-R
 
 %description
-No detailed description available
+helps to easily add controls like sliders, pickers, checkboxes, etc. that 
+    can be used to modify the input data or the parameters of an interactive 
+    chart created with package 'htmlwidgets'.
 
 %prep
 %setup -q -c -n manipulateWidget
@@ -34,13 +46,13 @@ No detailed description available
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1552886541
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1562203251
 
 %install
-export SOURCE_DATE_EPOCH=1552886541
+export SOURCE_DATE_EPOCH=1562203251
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -69,12 +81,12 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc  manipulateWidget || :
+R CMD check --no-manual --no-examples --no-codoc manipulateWidget || :
 
 
 %files
