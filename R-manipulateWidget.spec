@@ -4,23 +4,19 @@
 #
 Name     : R-manipulateWidget
 Version  : 0.10.0
-Release  : 23
+Release  : 24
 URL      : https://cran.r-project.org/src/contrib/manipulateWidget_0.10.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/manipulateWidget_0.10.0.tar.gz
 Summary  : Add Even More Interactivity to Interactive Charts
 Group    : Development/Tools
 License  : GPL-2.0+ MIT
 Requires: R-base64enc
-Requires: R-dygraphs
 Requires: R-htmltools
 Requires: R-htmlwidgets
 Requires: R-knitr
-Requires: R-leaflet
 Requires: R-miniUI
 Requires: R-shiny
 Requires: R-webshot
-Requires: R-xts
-Requires: R-zoo
 BuildRequires : R-base64enc
 BuildRequires : R-dygraphs
 BuildRequires : R-htmltools
@@ -33,11 +29,10 @@ BuildRequires : R-webshot
 BuildRequires : R-xts
 BuildRequires : R-zoo
 BuildRequires : buildreq-R
+BuildRequires : util-linux
 
 %description
-helps to easily add controls like sliders, pickers, checkboxes, etc. that 
-    can be used to modify the input data or the parameters of an interactive 
-    chart created with package 'htmlwidgets'.
+No detailed description available
 
 %prep
 %setup -q -c -n manipulateWidget
@@ -47,10 +42,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1562203251
+export SOURCE_DATE_EPOCH=1571859663
 
 %install
-export SOURCE_DATE_EPOCH=1562203251
+export SOURCE_DATE_EPOCH=1571859663
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
