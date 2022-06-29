@@ -4,7 +4,7 @@
 #
 Name     : R-manipulateWidget
 Version  : 0.11.1
-Release  : 46
+Release  : 47
 URL      : https://cran.r-project.org/src/contrib/manipulateWidget_0.11.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/manipulateWidget_0.11.1.tar.gz
 Summary  : Add Even More Interactivity to Interactive Charts
